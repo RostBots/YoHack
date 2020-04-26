@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <Title>Аутентификация</Title>
+    <link rel="stylesheet" type="text/css" href="bulma.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+
+</head>
+<style>
+    .columns {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<body>
+<section class="hero is-info">
+    <div class="hero-body">
+        <h1 class="title">Личный помощник школьника</h1>
+        <h2 class="subtitle">GDMS0918</h2>
+    </div>
+</section>
+<div class="columns">
+    <div class="column">
+        <form class="form" action="/log">
+            <input class="input" name="log" placeholder="Login" autocomplete="off">
+            <input class="input" name="pwd" type="password" placeholder="Password" autocomplete="off">
+            <button class="button">Вход</button>
+        </form>
+    </div>
+    <div class="column">
+        <form class="form" action="/reg">
+            <input class="input" name="log" placeholder="Login" autocomplete="off">
+            <input class="input" placeholder="Mentor or not" name="is_mentor">
+            <input class="input" name="pwd" type="password" placeholder="Password" autocomplete="off">
+            <button class="button">Зарегестрироваться</button>
+        </form>
+    </div>
+</div>
+</body>

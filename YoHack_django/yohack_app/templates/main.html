@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html style="height: 96%;min-height: 96%;max-height: 96%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>page</title>
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/Pretty-Registration-Form.css">
+    <link rel="stylesheet" href="../static/assets/css/styles.css">
+</head>
+
+<body style="background-color: rgb(255,255,255);height: 100%;min-height: 100%;max-height: 100%;">
+    <header style="background-color: rgb(255,255,255);height: 4%;">
+        <h2 class="text-justify text-center"><a href="/logout">Коммуникация с менторами</a></h2>
+    </header>
+    <div class="row" style="width: 98%;background-color: transparent;height: 96%;min-height: 96%;max-height: 96%;margin-right: 1%;margin-left: 1%;margin-top: 1%;margin-bottom: 1%;/*box-shadow: 0 0 5px 4px rgb(225,225,225);*/border: 1px solid rgb(215, 215, 215);">
+        <div class="col-xl-3" style="background-color: rgb(255,255,255);height: 100%;min-height: 100%;max-height: 100%;">
+            <h3 style="margin-top: 1%;margin-bottom: 0;">Мои вопросы</h3>
+            {% if questions|length == 0 %}
+                 <p>Этот список пока пуст</p>
+            {% else %}
+            <ul class="list-group overflow-auto" style="background-color: transparent;max-height: 93%;min-height: 93%;margin-bottom: 1%;height: 93%;">
+                {% for question in questions %}
+                <li class="list-group-item"><a href="/questionsPage?id={{ question.id }}">{{question.name}}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="col-xl-9 offset-xl-0" style="background-color: rgb(255,255,255);height: 100%;min-height: 100%;max-height: 100%;">
+            <form id="questionform" action="/create_question">
+                <h3 style="margin-left: 1%;">Заголовок вопроса</h3><textarea class="form-control" style="width: 98%;margin-right: 1%;margin-left: 1%;resize: none;" name="name"></textarea>
+                <h4 style="margin-left: 1%;margin-top: 1%;">Описание проблемы</h4><textarea class="form-control" style="width: 98%;margin-right: 1%;margin-left: 1%;resize: none;height: 100px;" name="text"></textarea>
+                    <h4 style="width: 98%;margin-right: 1%;margin-left: 1%;margin-top: 1%;">Выбери свой кейс)</h4><select style="width: 98%;margin-right: 1%;margin-left: 1%;" name="case">
+                     {% if cases|length == 0 %}
+                     <optgroup>
+                         <option value=0>0</option>
+                     </optgroup>
+                     {% else %}
+                        {% for case in cases %}
+                                <optgroup>
+                                    <option value='{{case.id}}'>{{case.name}}</option>
+                                </optgroup>
+                        {% endfor %}
+                    {% endif %}
+    </select>
+                <h4 style="margin-right: 1%;margin-left: 1%;margin-top: 1%;">Задать вопрос лично ментору</h4><input type="checkbox" style="width: 15px;height: 15px;margin-right: 2%;margin-left: 2%;" name="for_mentor">
+                <button class="btn btn-success btn-lg text-center" style="width: 48%;color: rgb(0,0,0);background-color: rgb(245,255,245);height: 98%;margin-right: 26%;margin-left: 26%;margin-top: 1%;">Задать вопрос!</button></form>
+        </div>
+    </div>
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html style="height: 96%;min-height: 96%;max-height: 96%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Helper</title>
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/Pretty-Registration-Form.css">
+    <link rel="stylesheet" href="../static/assets/css/styles.css">
+</head>
+
+<body style="background-color: rgb(255,255,255);height: 100%;min-height: 100%;max-height: 100%;">
+    <header style="background-color: rgb(255,255,255);height: 4%;">
+        <h2 class="text-justify text-center"><a href="/logout">Выйти из аккаунта</a></h2>
+    </header>
+    <div class="row" style="width: 98%;background-color: transparent;height: 96%;min-height: 96%;max-height: 96%;margin-right: 1%;margin-left: 1%;margin-top: 1%;margin-bottom: 1%;/*box-shadow: 0 0 5px 4px rgb(225,225,225);*/border: 1px solid rgb(215, 215, 215);">
+        <div class="col-xl-3" style="background-color: rgb(255,255,255);height: 100%;min-height: 100%;max-height: 100%;">
+            <h3 style="margin-top: 1%;margin-bottom: 0;">Заданные вопросы</h3>
+            {% if questions|length == 0 %}
+                 <p>Этот список пока пуст</p>
+            {% else %}
+            <ul class="list-group overflow-auto" style="background-color: transparent;max-height: 93%;min-height: 93%;margin-bottom: 1%;height: 93%;">
+                {% for question in questions %}
+                <li class="list-group-item"><a href="/questionPage?id={{ question.id }}">{{question.name}}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="col-xl-9 offset-xl-0" style="background-color: rgb(255,255,255);height: 100%;min-height: 100%;max-height: 100%;">
+            <form id="questionform" action="/answer">
+                <h3 style="margin-left: 1%;">Вопрос</h3><p class="form-control" name="text">{{current_question.text}}</input>
+                <input type="hidden" name="text" value="{{current_question.text}}">
+                {% if current_question.answer != 0 %}
+                <p>{{current_question.answer}}</p>
+                {% endif %}
+                <h4 style="margin-left: 1%;margin-top: 1%;">Ответить на вопрос</h4><textarea class="form-control" style="width: 98%;margin-right: 1%;margin-left: 1%;resize: none;height: 100px;" name="answ"></textarea>
+                <div class="form-row" style="width: 98%;margin-right: 1%;margin-left: 1%;background-color: #ff0000;height: 100px;"></div><button class="btn btn-success btn-lg text-center" style="width: 48%;color: rgb(0,0,0);background-color: rgb(245,255,245);height: 98%;margin-right: 26%;margin-left: 26%;margin-top: 1%;">Готово</button></form>
+        </div>
+    </div>
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

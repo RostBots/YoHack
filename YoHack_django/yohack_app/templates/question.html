@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html style="height: 96%;min-height: 96%;max-height: 96%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Helper</title>
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/Pretty-Registration-Form.css">
+    <link rel="stylesheet" href="../static/assets/css/styles.css">
+</head>
+
+<body style="background-color: rgb(255,255,255);height: 100%;min-height: 100%;max-height: 100%;">
+    <header style="background-color: rgb(255,255,255);height: 4%;">
+        <h2 class="text-justify text-center"><a href="/logout">Коммуникация с менторами</a></h2>
+    </header>
+    <div class="row" style="width: 98%;background-color: transparent;height: 96%;min-height: 96%;max-height: 96%;margin-right: 1%;margin-left: 1%;margin-top: 1%;margin-bottom: 1%;/*box-shadow: 0 0 5px 4px rgb(225,225,225);*/border: 1px solid rgb(215, 215, 215);">
+        <div class="col-xl-9 offset-xl-0" style="background-color: rgb(255,255,255);height: 100%;min-height: 100%;max-height: 100%;">
+                <h3 style="margin-left: 1%;">Вопрос</h3><p class="form-control">{{current_question.text}}</p>
+                <input type="hidden" name="text" value="{{current_question.text}}">
+                {% if current_question.answer != 0 %}
+                <h3 style="margin-left: 1%;">Ответ</h3>
+                <p class="form-control" >{{current_question.answer}}</p>
+                {% endif %}
+                 <h3 style="margin-left: 1%;">Похожие Вопросы</h3>
+                 {% for text in txt %}
+                 <p class="form-control">{{text.0}} </br> </p>
+            <p><b>Ответ:</b>  {{text.1}} </br> </p>
+                 {% endfor %}
+
+        </div>
+    </div>
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
