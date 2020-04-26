@@ -28,9 +28,9 @@ def check_question(text):
 
     clusters = clustering.labels_
     
-    ans = []
+    ans = {}
     for i in range(len(clusters) - 1):
         if clusters[i] == clusters[-1]:
-            ans.append(y[i])
+            ans[X[i]] = y[i]
         
     return ans
